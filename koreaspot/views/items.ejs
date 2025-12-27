@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recommended Spots in Korea</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body class="list-body">
+    <header class="hero">
+      <div class="hero-meta">DISCOVER KOREA</div>
+      <div class="hero-top">
+        <h1>Recommended Spots in Korea</h1>
+        <a class="btn-primary" href="/items/create">＋ New Spot</a>
+      </div>
+      <p class="hero-sub">韓国の美しい場所を紹介します</p>
+      <div class="filters">
+        <button class="filter active">All Spots</button>
+      </div>
+    </header>
+
+    <main class="card-grid">
+      <% data.forEach((spot, index) => { %>
+      <article class="card">
+        <div class="card-img">
+          <img src="/public/images/<%= spot.image %>" alt="<%= spot.title %>" />
+          <span class="badge"><%= spot.category %></span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title"><%= spot.title %></h3>
+          <div class="card-location">📍 <%= spot.location %></div>
+          <p class="card-desc"><%= spot.description %></p>
+          <div class="card-actions">
+            <a href="/items/<%= index %>" class="link">View</a>
+            <a href="/items/edit/<%= index %>" class="link">Edit</a>
+            <a
+              href="/items/delete/<%= index %>"
+              class="link danger"
+              onclick="return confirm('削除しますか？')"
+              >Delete</a
+            >
+          </div>
+        </div>
+      </article>
+      <% }); %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Spot - Korea Spots</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body class="form-body">
+    <div class="form-top">
+      <a href="/items" class="btn-ghost">← Cancel</a>
+      <div class="brand-chip">🧭 Korea Spots</div>
+    </div>
+
+    <div class="form-card">
+      <h1>New Spot</h1>
+      <p class="form-sub">韓国のおすすめスポットを追加します</p>
+
+      <form method="POST" action="/items">
+        <div class="img-field">
+          <div class="img-preview" id="imgPreview">No Image</div>
+          <div class="img-input">
+            <label>Image filename</label>
+            <input
+              type="text"
+              name="image"
+              id="imageInput"
+              placeholder="spot.jpg"
+              required
+            />
+            <small>/public/images にあるファイル名</small>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Title *</label>
+            <input type="text" name="title" required />
+          </div>
+          <div class="field">
+            <label>Category *</label>
+            <input
+              type="text"
+              name="category"
+              placeholder="Café / Culture / Nature..."
+              required
+            />
+          </div>
+          <div class="field">
+            <label>Location *</label>
+            <input type="text" name="location" required />
+          </div>
+          <div class="field">
+            <label>Date (おすすめ時期)</label>
+            <input type="text" name="date" />
+          </div>
+          <div class="field span-2">
+            <label>Description</label>
+            <textarea name="description" required></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a class="btn-ghost" href="/items">Cancel</a>
+          <button type="submit" class="btn-primary">Create Spot</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const input = document.getElementById("imageInput");
+      const preview = document.getElementById("imgPreview");
+      input.addEventListener("input", () => {
+        const f = input.value.trim();
+        preview.innerHTML = f
+          ? `<img src="/public/images/${f}" alt="">`
+          : "No Image";
+      });
+    </script>
+  </body>
+</html>

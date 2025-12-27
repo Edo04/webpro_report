@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= data.name %> - HYBE</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <style>
+      .detail-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 0;
+        margin: -40px -20px 40px -20px;
+        position: relative;
+      }
+
+      .detail-header-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .header-image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.6;
+        z-index: 1;
+      }
+
+      .header-info {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+      }
+
+      .header-badges {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .header-badge {
+        background: rgba(255, 255, 255, 0.3);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+      }
+
+      .header-title {
+        font-size: 56px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .header-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 16px;
+        opacity: 0.95;
+      }
+
+      .header-label::before {
+        content: "🏢";
+        font-size: 18px;
+      }
+
+      .top-actions {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .back-link {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+
+      .back-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .edit-btn,
+      .delete-btn {
+        background: white;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .edit-btn {
+        background: white;
+        color: #000;
+      }
+
+      .delete-btn {
+        background: #ffebee;
+        color: #c62828;
+      }
+
+      .delete-btn:hover {
+        background: #ffcdd2;
+      }
+
+      .detail-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 40px;
+        padding: 0 20px;
+      }
+
+      .detail-main {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .detail-section {
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+      }
+
+      .detail-section h2 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .detail-section p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #555;
+      }
+
+      .quick-facts {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 20px;
+      }
+
+      .fact-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .fact-icon {
+        width: 50px;
+        height: 50px;
+        background: #000;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .fact-content h3 {
+        font-size: 14px;
+        color: #999;
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+
+      .fact-content p {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000;
+        margin: 0;
+      }
+
+      .detail-sidebar {
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        height: fit-content;
+      }
+
+      .sidebar-section {
+        margin-bottom: 30px;
+      }
+
+      .sidebar-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .sidebar-label {
+        font-size: 14px;
+        color: #999;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .sidebar-value {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000;
+      }
+
+      .back-to-list {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .back-to-list a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .back-to-list a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .detail-container {
+          grid-template-columns: 1fr;
+        }
+
+        .header-title {
+          font-size: 36px;
+        }
+
+        .quick-facts {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="detail-header">
+      <img
+        src="/public/images/<%= data.image %>"
+        alt="<%= data.name %>"
+        class="header-image"
+      />
+      <div class="detail-header-content">
+        <div class="header-info">
+          <div class="header-badges">
+            <span class="header-badge"><%= data.category %></span>
+            <span class="header-badge">Since <%= data.debut %></span>
+          </div>
+          <h1 class="header-title"><%= data.name %></h1>
+          <div class="header-label"><%= data.label %></div>
+        </div>
+        <div class="top-actions">
+          <a href="/items" class="back-link">← Back to Artists</a>
+          <a href="/items/edit/<%= id %>" class="edit-btn">✏ Edit</a>
+          <a
+            href="/items/delete/<%= id %>"
+            class="delete-btn"
+            onclick="return confirm('削除しますか？')"
+            >🗑 Delete</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-container">
+      <div class="detail-main">
+        <div class="detail-section">
+          <h2>About</h2>
+          <p><%= data.description %></p>
+        </div>
+
+        <div class="detail-section">
+          <h2>Quick Facts</h2>
+          <div class="quick-facts">
+            <div class="fact-item">
+              <div class="fact-icon">♪</div>
+              <div class="fact-content">
+                <h3>Debut Song</h3>
+                <p>No More Dream</p>
+              </div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-icon">👥</div>
+              <div class="fact-content">
+                <h3>Fanclub Name</h3>
+                <p>ARMY</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-sidebar">
+        <h2>Group Information</h2>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Agency</div>
+          <div class="sidebar-value"><%= data.label %></div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Category</div>
+          <div class="sidebar-value"><%= data.category %></div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Members</div>
+          <div class="sidebar-value">7</div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Debut Year</div>
+          <div class="sidebar-value"><%= data.debut %></div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Fanclub</div>
+          <div class="sidebar-value">ARMY</div>
+        </div>
+        <div class="back-to-list">
+          <a href="/items">← Back to List</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

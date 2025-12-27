@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= data.title %> - Korea Spots</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body class="detail-body">
+    <header class="detail-hero">
+      <img
+        class="detail-hero-img"
+        src="/public/images/<%= data.image %>"
+        alt="<%= data.title %>"
+      />
+      <div class="detail-hero-overlay"></div>
+      <div class="detail-hero-inner">
+        <div class="detail-badges">
+          <span class="badge badge-hero"><%= data.category %></span>
+          <span class="badge badge-hero"><%= data.date %></span>
+        </div>
+        <h1><%= data.title %></h1>
+        <div class="detail-location">📍 <%= data.location %></div>
+        <div class="detail-actions">
+          <a href="/items" class="btn-ghost">← Back</a>
+          <a href="/items/edit/<%= id %>" class="btn-primary">Edit</a>
+          <a
+            href="/items/delete/<%= id %>"
+            class="btn-danger"
+            onclick="return confirm('削除しますか？')"
+            >Delete</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="detail-main">
+      <section class="detail-card">
+        <h2>About</h2>
+        <p><%= data.description %></p>
+      </section>
+      <section class="detail-side">
+        <div class="side-row">
+          <span class="side-label">Category</span>
+          <span class="side-value"><%= data.category %></span>
+        </div>
+        <div class="side-row">
+          <span class="side-label">Location</span>
+          <span class="side-value"><%= data.location %></span>
+        </div>
+        <div class="side-row">
+          <span class="side-label">Date</span>
+          <span class="side-value"><%= data.date %></span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

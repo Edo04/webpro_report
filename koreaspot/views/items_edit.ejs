@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit <%= data.title %> - Korea Spots</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body class="form-body">
+    <div class="form-top">
+      <a href="/items/<%= id %>" class="btn-ghost">← Cancel</a>
+      <div class="brand-chip">🧭 Korea Spots</div>
+    </div>
+
+    <div class="form-card">
+      <h1>Edit Spot</h1>
+      <p class="form-sub">スポット情報を更新します</p>
+
+      <form method="POST" action="/items/update/<%= id %>">
+        <div class="img-field">
+          <div class="img-preview">
+            <img
+              src="/public/images/<%= data.image %>"
+              alt="<%= data.title %>"
+            />
+          </div>
+          <div class="img-input">
+            <label>Image filename</label>
+            <input
+              type="text"
+              name="image"
+              value="<%= data.image %>"
+              required
+            />
+            <small>/public/images にあるファイル名</small>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Title *</label>
+            <input
+              type="text"
+              name="title"
+              value="<%= data.title %>"
+              required
+            />
+          </div>
+          <div class="field">
+            <label>Category *</label>
+            <input
+              type="text"
+              name="category"
+              value="<%= data.category %>"
+              required
+            />
+          </div>
+          <div class="field">
+            <label>Location *</label>
+            <input
+              type="text"
+              name="location"
+              value="<%= data.location %>"
+              required
+            />
+          </div>
+          <div class="field">
+            <label>Date (おすすめ時期)</label>
+            <input type="text" name="date" value="<%= data.date %>" />
+          </div>
+          <div class="field span-2">
+            <label>Description</label>
+            <textarea name="description" required>
+<%= data.description %></textarea
+            >
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a class="btn-ghost" href="/items/<%= id %>">Cancel</a>
+          <button type="submit" class="btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

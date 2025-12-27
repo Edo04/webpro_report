@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= data.title %> - Event Detail</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body class="page-bg">
+    <header class="header">
+      <div class="container">
+        <p class="logo">SEVENTEEN OFFICIAL</p>
+      </div>
+    </header>
+
+    <main class="container detail-wrapper">
+      <div class="badge-pill top-badge"><%= data.category %></div>
+      <h1 class="detail-title"><%= data.title %></h1>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <p class="info-label">開催日</p>
+          <div class="info-value">
+            <span class="icon">📅</span><%= data.date %>
+          </div>
+        </div>
+        <div class="info-card">
+          <p class="info-label">場所</p>
+          <div class="info-value">
+            <span class="icon">📍</span><%= data.location %>
+          </div>
+        </div>
+        <div class="info-card">
+          <p class="info-label">カテゴリー</p>
+          <div class="info-value">
+            <span class="icon">🏷️</span><%= data.category %>
+          </div>
+        </div>
+        <div class="info-card">
+          <p class="info-label">画像ファイル</p>
+          <div class="info-value">
+            <span class="icon">🖼️</span><%= data.image %>
+          </div>
+        </div>
+      </div>
+
+      <section class="detail-section">
+        <p class="info-label">詳細</p>
+        <div class="desc-box"><%= data.description %></div>
+      </section>
+
+      <div class="detail-actions">
+        <a class="btn-ghost" href="/items">← 一覧に戻る</a>
+        <div class="btn-group">
+          <a class="btn-edit" href="/items/edit/<%= id %>">✏ 編集</a>
+          <a
+            class="btn-delete"
+            href="/items/delete/<%= id %>"
+            onclick="return confirm('削除しますか？')"
+            >🗑 削除</a
+          >
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

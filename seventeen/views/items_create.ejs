@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>新規イベント作成</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/form.css" />
+  </head>
+  <body>
+    <header class="header-form">
+      <div class="container">
+        <a href="/items" class="back-link">← イベント一覧に戻る</a>
+        <h1>新規イベント作成</h1>
+        <p class="subtitle">イベントの詳細情報を入力してください</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <form class="form-container" method="POST" action="/items">
+        <div class="form-group">
+          <label for="title" class="form-label"
+            >イベントタイトル <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="form-input"
+            placeholder="Enter event title"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date" class="form-label"
+              >開催日 <span class="required">*</span></label
+            >
+            <input
+              type="date"
+              id="date"
+              name="date"
+              class="form-input"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="category" class="form-label"
+              >カテゴリー <span class="required">*</span></label
+            >
+            <select id="category" name="category" class="form-input" required>
+              <option value="">Select category</option>
+              <option value="Concert">Concert</option>
+              <option value="Exhibition">Exhibition</option>
+              <option value="Fan Sign">Fan Sign</option>
+              <option value="Fan Meeting">Fan Meeting</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="location" class="form-label"
+            >開催場所 <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            id="location"
+            name="location"
+            class="form-input"
+            placeholder="Enter event location"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description" class="form-label">詳細説明</label>
+          <textarea
+            id="description"
+            name="description"
+            class="form-textarea"
+            placeholder="Enter event description..."
+            rows="6"
+          ></textarea>
+          <p class="form-hint">Provide a detailed description of the event</p>
+        </div>
+
+        <div class="form-group">
+          <label for="image" class="form-label">画像ファイル名</label>
+          <div class="form-file-input">
+            <span class="file-icon">🖼️</span>
+            <input
+              type="text"
+              id="image"
+              name="image"
+              class="form-input"
+              placeholder="e.g., event_poster.jpg"
+            />
+            <p class="form-hint">Enter the image filename</p>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a href="/items" class="btn-cancel">キャンセル</a>
+          <button type="submit" class="btn-submit">✓ イベント作成</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

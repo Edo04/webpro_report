@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Artist Group - HYBE</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <style>
+      body {
+        background: #f8f9fb;
+      }
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 32px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .topbar a {
+        color: #6b7280;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        background: #111;
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 8px;
+      }
+      .page-title {
+        text-align: center;
+        margin: 10px auto 32px;
+        max-width: 720px;
+      }
+      .page-title h1 {
+        font-size: 36px;
+        margin: 0 0 8px;
+        font-weight: 800;
+      }
+      .page-title p {
+        color: #6b7280;
+        margin: 0;
+        font-size: 15px;
+      }
+      .edit-card {
+        max-width: 1100px;
+        margin: 0 auto 48px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      }
+      .img-row {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+      .img-preview {
+        width: 200px;
+        aspect-ratio: 4/5;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #9ca3af;
+        font-weight: 600;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      }
+      .img-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .form-note {
+        color: #6b7280;
+        font-size: 13px;
+        margin-top: 6px;
+      }
+      .form-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      label {
+        font-weight: 700;
+        color: #111;
+        font-size: 14px;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #dfe3e8;
+        border-radius: 10px;
+        font-size: 14px;
+        background: #fdfdfd;
+      }
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+      .actions {
+        margin-top: 28px;
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+      }
+      .btn {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+        text-align: center;
+      }
+      .btn-secondary {
+        background: #f3f4f6;
+        color: #111;
+      }
+      .btn-primary {
+        background: #111;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <a href="/items">← Cancel</a>
+      <div class="brand">🎵 HYBE Labels</div>
+    </div>
+
+    <div class="page-title">
+      <h1>Add Artist Group</h1>
+      <p>Enter the information for the new artist group</p>
+    </div>
+
+    <div class="edit-card">
+      <form method="POST" action="/items">
+        <div class="img-row">
+          <div class="img-preview" id="imgPreview">No Image</div>
+          <div style="flex: 1; min-width: 260px">
+            <label>Group Image</label>
+            <input
+              type="text"
+              name="image"
+              id="imageInput"
+              placeholder="bts.jpg"
+              required
+            />
+            <div class="form-note">
+              Enter the filename stored in /public/images
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Group Name *</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="form-group">
+            <label>Category *</label>
+            <select name="category" required>
+              <option value="">Select</option>
+              <option value="Boy Group">Boy Group</option>
+              <option value="Girl Group">Girl Group</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Agency *</label>
+            <input type="text" name="label" required />
+          </div>
+          <div class="form-group">
+            <label>Debut Year</label>
+            <input type="text" name="debut" />
+          </div>
+          <div class="form-group">
+            <label>Number of Members</label>
+            <input type="number" name="members" min="1" />
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1">
+            <label>Fanclub Name</label>
+            <input type="text" name="fanclub" />
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1">
+            <label>Description</label>
+            <textarea name="description" required></textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-secondary" href="/items">Cancel</a>
+          <button type="submit" class="btn btn-primary">Create Group</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const input = document.getElementById("imageInput");
+      const preview = document.getElementById("imgPreview");
+      input.addEventListener("input", () => {
+        const filename = input.value.trim();
+        if (filename) {
+          preview.innerHTML = `<img src="/public/images/${filename}" alt="">`;
+        } else {
+          preview.textContent = "No Image";
+        }
+      });
+    </script>
+  </body>
+</html>

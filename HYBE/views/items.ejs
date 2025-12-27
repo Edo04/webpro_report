@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HYBE - Artists & Groups</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Artists & Groups</h1>
+        <p>
+          Discover the complete roster of world-class artists under HYBE Labels,
+          from global superstars to rising talents.
+        </p>
+        <a href="/items/create" class="add-button">+ Add New Group</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat-item">
+          <h3><%= data.length %></h3>
+          <p>Active Groups</p>
+        </div>
+        <div class="stat-item">
+          <h3>6</h3>
+          <p>Labels</p>
+        </div>
+        <div class="stat-item">
+          <h3>50+</h3>
+          <p>Artists</p>
+        </div>
+        <div class="stat-item">
+          <h3>2005</h3>
+          <p>Founded</p>
+        </div>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All Groups</button>
+      </div>
+
+      <div class="groups-grid" id="groupsGrid">
+        <% data.forEach((group, index) => { %>
+        <div class="group-card" data-category="<%= group.category %>">
+          <div class="card-image">
+            <img
+              src="/public/images/<%= group.image %>"
+              alt="<%= group.name %>"
+            />
+            <div class="card-badges">
+              <span class="badge"><%= group.category %></span>
+              <span class="badge year"><%= group.debut %></span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="group-name"><%= group.name %></div>
+            <div class="group-label"><%= group.label %></div>
+            <div class="card-description"><%= group.description %></div>
+            <div class="card-actions">
+              <a href="/items/<%= index %>" class="card-btn btn-view">View</a>
+              <a href="/items/edit/<%= index %>" class="card-btn btn-edit"
+                >Edit</a
+              >
+              <a
+                href="/items/delete/<%= index %>"
+                class="card-btn btn-delete"
+                onclick="return confirm('削除しますか？')"
+                >Delete</a
+              >
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+
+    <script src="/public/js/filter.js"></script>
+  </body>
+</html>
