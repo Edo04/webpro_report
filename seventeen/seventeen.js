@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require("express");
 const app = express();
 
@@ -6,13 +8,16 @@ app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
 // SEVENTEENイベントデータ
+// ...existing code...
+
+// SEVENTEENイベントデータ
 let items = [
   {
     id: 1,
     title: "SEVENTEEN WORLD TOUR [BE THE SUN]",
     date: "2024-06-15",
     location: "東京ドーム",
-    category: "Concert",
+    category: "コンサート",
     description: "SEVENTEENの日本ツアー東京公演。自主制作アイドルとしての圧倒的なパフォーマンスをお届けします。",
     image: "concert1.jpg"
   },
@@ -21,7 +26,7 @@ let items = [
     title: "CARAT LAND 2024",
     date: "2024-08-20",
     location: "幕張メッセ",
-    category: "Fan Meeting",
+    category: "ファンミーティング",
     description: "ファンミーティング。CARATs（ファン）との特別な時間を過ごします。",
     image: "fanmeeting.jpg"
   },
@@ -30,7 +35,7 @@ let items = [
     title: "SEVENTEEN FOLLOW TOUR",
     date: "2024-09-10",
     location: "京セラドーム大阪",
-    category: "Concert",
+    category: "コンサート",
     description: "新アルバム「SEVENTEENTH HEAVEN」を引っ提げた日本ツアー大阪公演。",
     image: "concert2.jpg"
   }
